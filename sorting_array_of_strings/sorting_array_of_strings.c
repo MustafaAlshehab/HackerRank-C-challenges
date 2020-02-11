@@ -11,22 +11,22 @@ int lexicographic_sort_reverse(const char* a, const char* b) {
 }
 
 int sort_by_number_of_distinct_characters(const char* a, const char* b) {
-    int distinct_character1 = 0;
-    int distinct_character2 = 0;
-    int count[256] = {0};
-    int count2[256] = {0};
+    int distinct_character1 = 0, distinct_character2 = 0;
+    int count1[25] = {0}, count2[25] = {0};
 
     for(int i = 0; a[i]; i++){
-        count[a[i]]++;
+        count1[a[i] - 97]++;
     }
-    for (int i = 0; i < 256; i++){
-        distinct_character1++;
+    for (int i = 0; i < 25; i++){
+         if(count1[i] == 1){
+            distinct_character1++;
+        }
     }
     for(int i =0; b[i]; i++){
-        count2[b[i]]++;
+        count2[b[i] - 97]++;
     }
-    for (int i = 0; i < 256; i++){
-        if(count[i] == 1){
+    for (int i = 0; i < 25; i++){
+        if(count2[i] == 1){
             distinct_character2++;
         }
     }
